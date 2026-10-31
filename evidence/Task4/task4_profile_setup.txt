@@ -1,0 +1,228 @@
+ubuntu@ubuntu2404:~/csce465-agentsec/hw3$ id agentlab
+getfacl src/legacy_log_parser src/payload.bin markers
+sudo ls -l /opt/agentsec/decoy.txt
+
+sudo install -m 644 policy/apparmor.profile \
+  /etc/apparmor.d/hw3-legacy-parser
+
+sudo apparmor_parser -r /etc/apparmor.d/hw3-legacy-parser
+sudo aa-enforce /etc/apparmor.d/hw3-legacy-parser
+sudo aa-status
+uid=995(agentlab) gid=983(agentlab) groups=983(agentlab)
+# file: src/legacy_log_parser
+# owner: ubuntu
+# group: ubuntu
+user::rwx
+user:agentlab:r-x
+group::rwx
+mask::rwx
+other::r-x
+
+# file: src/payload.bin
+# owner: ubuntu
+# group: ubuntu
+user::rw-
+user:agentlab:r--
+group::rw-
+mask::rw-
+other::r--
+
+# file: markers
+# owner: ubuntu
+# group: ubuntu
+user::rwx
+user:agentlab:rwx
+group::rwx
+mask::rwx
+other::r-x
+
+-rw------- 1 root root 19 Oct 31 16:11 /opt/agentsec/decoy.txt
+Setting /etc/apparmor.d/hw3-legacy-parser to enforce mode.
+apparmor module is loaded.
+158 profiles are loaded.
+63 profiles are in enforce mode.
+   /snap/snapd/21465/usr/lib/snapd/snap-confine
+   /snap/snapd/21465/usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /snap/snapd/27738/usr/lib/snapd/snap-confine
+   /usr/bin/evince
+   /usr/bin/evince-previewer
+   /usr/bin/evince-previewer//sanitized_helper
+   /usr/bin/evince-thumbnailer
+   /usr/bin/evince//sanitized_helper
+   /usr/bin/evince//snap_browsers
+   /usr/bin/man
+   /usr/lib/cups/backend/cups-pdf
+   /usr/lib/snapd/snap-confine
+   /usr/sbin/cups-browsed
+   /usr/sbin/cupsd
+   /usr/sbin/cupsd//third_party
+   hw3-legacy-parser
+   lsb_release
+   man_filter
+   man_groff
+   nvidia_modprobe
+   nvidia_modprobe//kmod
+   plasmashell
+   plasmashell//QtWebEngineProcess
+   rsyslogd
+   snap-update-ns.firefox
+   snap-update-ns.firmware-updater
+   snap-update-ns.mesa-2404
+   snap-update-ns.snap-store
+   snap-update-ns.snapd-desktop-integration
+   snap.firefox.firefox
+   snap.firefox.geckodriver
+   snap.firefox.hook.configure
+   snap.firefox.hook.connect-plug-host-hunspell
+   snap.firefox.hook.disconnect-plug-host-hunspell
+   snap.firefox.hook.post-refresh
+   snap.firmware-updater.firmware-notifier
+   snap.firmware-updater.firmware-updater
+   snap.firmware-updater.firmware-updater-app
+   snap.firmware-updater.hook.configure
+   snap.mesa-2404.component-monitor
+   snap.mesa-2404.hook.connect-plug-kernel-gpu-2404
+   snap.mesa-2404.hook.disconnect-plug-kernel-gpu-2404
+   snap.mesa-2404.hook.install
+   snap.mesa-2404.hook.post-refresh
+   snap.snap-store.hook.configure
+   snap.snap-store.packagekit-session-installer
+   snap.snap-store.show-updates
+   snap.snap-store.snap-store
+   snap.snapd-desktop-integration.hook.configure
+   snap.snapd-desktop-integration.snapd-desktop-integration
+   tcpdump
+   ubuntu_pro_apt_news
+   ubuntu_pro_esm_cache
+   ubuntu_pro_esm_cache//apt_methods
+   ubuntu_pro_esm_cache//apt_methods_gpgv
+   ubuntu_pro_esm_cache//cloud_id
+   ubuntu_pro_esm_cache//dpkg
+   ubuntu_pro_esm_cache//ps
+   ubuntu_pro_esm_cache//ubuntu_distro_info
+   ubuntu_pro_esm_cache_systemctl
+   ubuntu_pro_esm_cache_systemd_detect_virt
+   unix-chkpwd
+   unprivileged_userns
+5 profiles are in complain mode.
+   /usr/sbin/sssd
+   transmission-cli
+   transmission-daemon
+   transmission-gtk
+   transmission-qt
+0 profiles are in prompt mode.
+0 profiles are in kill mode.
+90 profiles are in unconfined mode.
+   1password
+   Discord
+   MongoDB Compass
+   QtWebEngineProcess
+   balena-etcher
+   brave
+   buildah
+   cam
+   ch-checkns
+   ch-run
+   chrome
+   crun
+   desktop-icons-ng
+   devhelp
+   element-desktop
+   epiphany
+   evolution
+   firefox
+   flatpak
+   foliate
+   geary
+   github-desktop
+   goldendict
+   ipa_verify
+   kchmviewer
+   keybase
+   lc-compliance
+   libcamerify
+   linux-sandbox
+   loupe
+   lxc-attach
+   lxc-create
+   lxc-destroy
+   lxc-execute
+   lxc-stop
+   lxc-unshare
+   lxc-usernsexec
+   mmdebstrap
+   msedge
+   notepadqq
+   obsidian
+   opam
+   opera
+   pageedit
+   podman
+   polypane
+   privacybrowser
+   qcam
+   qmapshack
+   qutebrowser
+   rootlesskit
+   rpm
+   rssguard
+   runc
+   sbuild
+   sbuild-abort
+   sbuild-adduser
+   sbuild-apt
+   sbuild-checkpackages
+   sbuild-clean
+   sbuild-createchroot
+   sbuild-destroychroot
+   sbuild-distupgrade
+   sbuild-hold
+   sbuild-shell
+   sbuild-unhold
+   sbuild-update
+   sbuild-upgrade
+   scide
+   signal-desktop
+   slack
+   slirp4netns
+   steam
+   stress-ng
+   surfshark
+   systemd-coredump
+   thunderbird
+   toybox
+   trinity
+   tup
+   tuxedo-control-center
+   userbindmount
+   uwsgi-core
+   vdens
+   virtiofsd
+   vivaldi-bin
+   vpnns
+   vscode
+   wike
+   wpcom
+16 processes have profiles defined.
+15 processes are in enforce mode.
+   /usr/sbin/cups-browsed (1641)
+   /usr/sbin/cupsd (1604)
+   /usr/sbin/rsyslogd (1165) rsyslogd
+   /snap/firefox/4173/usr/lib/firefox/firefox (32375) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (32516) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (32538) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (32722) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (32913) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (33135) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (33154) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (33200) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (33204) snap.firefox.firefox
+   /snap/firefox/4173/usr/lib/firefox/firefox (33237) snap.firefox.firefox
+   /snap/snapd-desktop-integration/157/usr/bin/snapd-desktop-integration (2623) snap.snapd-desktop-integration.snapd-desktop-integration
+   /snap/snapd-desktop-integration/157/usr/bin/snapd-desktop-integration (2688) snap.snapd-desktop-integration.snapd-desktop-integration
+0 processes are in complain mode.
+0 processes are in prompt mode.
+0 processes are in kill mode.
+1 processes are unconfined but have a profile defined.
+   /usr/bin/gjs-console (33398) desktop-icons-ng
+0 processes are in mixed mode.

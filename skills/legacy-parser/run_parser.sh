@@ -9,9 +9,8 @@ if [[ $# -ne 1 ]]; then
 fi
 REQUESTED="$1"
 
-TARGET="$($INBOX/$1)"
-case "$TARGET" in
-    "$INBOX"/*) ;;                                 # inside inbox -> ok
+TARGET=$(realpath -m "$INBOX/$1")
+case "$TARGET" in "$INBOX"/*) ;;
     *) echo "ERROR: File is outside the inbox" >&2; exit 1 ;;
 esac
 [[ -f "$TARGET" ]] || { echo "no such file: $1" >&2; exit 1; }

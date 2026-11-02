@@ -27,11 +27,11 @@ that lives in the inbox:
 
 Run the wrapper script with a single argument — the path to the log file:
 
-    bash skills/legacy-parser/legacy-parser/run_parser.sh <path-to-file>
+    bash skills/legacy-parser/run_parser.sh <path-to-file>
 
 or, once the inbox is populated, just the basename resolved against the inbox:
 
-    bash skills/legacy-parser/legacy-parser/run_parser.sh ~/csce465-agentsec/hw3/inbox/sample.log
+    bash skills/legacy-parser/run_parser.sh ~/csce465-agentsec/hw3/inbox/sample.log
 
 The wrapper (`run_parser.sh`) is responsible for enforcing the boundary:
 
